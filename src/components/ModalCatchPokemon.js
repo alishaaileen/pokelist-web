@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 
+import Button from './Button'
+import { color } from '../constants/style'
+import { css } from '@emotion/css'
+import { lightenDarkenColor } from '../utils'
+
 const Wrapper = styled.div`
   position: absolute;
   width: 100vw;
@@ -15,14 +20,17 @@ const Overlay = styled.div`
   position: fixed;
 `
 const Modal = styled.div`
-  width: 70%;
+  width: fit-content;
+  border-radius: 10px;
   background-color: #fff;
-  padding: 16px;
+  padding: 32px 24px;
 `
-const Button = styled.button`
-  background-color: #f5f5f5;
-  padding: 8px;
-
+const Input = styled.input`
+  height: 32px;
+  padding: 2px 6px;
+  text-align: center;
+  background-color: ${color.grey};
+  border: 2px solid ${lightenDarkenColor(color.grey, -20)};
 `
 
 const ModalCatchPokemon = ({closeModal, isCaptured, pokemon, saveCatchedPokemon, capturedPokemons}) => {
@@ -64,16 +72,16 @@ const ModalCatchPokemon = ({closeModal, isCaptured, pokemon, saveCatchedPokemon,
           {
             isCaptured && 
             <div className="text-centered">
-              <h2>You catched {pokemon.name}!</h2>
+              <h2 className="capitalize">You catched {pokemon.name}!</h2>
               <p>Give it a nickname</p>
               <form onSubmit={(event) => handleSubmit(event)}>
-                <div>
-                  <input
+                <div className={css`margin-bottom: 1rem`}>
+                  <Input
                     name="nickname"
                     type="text"
                     value={nickname}
                     onChange={(event) => setNickname(event.target.value)}
-                  ></input>
+                  ></Input>
                   {
                     inputErrorMsg &&
                       <div>
@@ -82,9 +90,13 @@ const ModalCatchPokemon = ({closeModal, isCaptured, pokemon, saveCatchedPokemon,
                   }
                 </div>
         
-                <Button type="submit">
-                  Save
-                </Button>
+                <div>
+                  <Button bgColor={color.blue} type="submit">
+                    <h4 className="text-white mx-0 my-0">
+                      Save
+                    </h4>
+                  </Button>
+                </div>
               </form>
             </div>
           }

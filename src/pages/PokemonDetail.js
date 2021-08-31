@@ -3,21 +3,17 @@ import { MyPokemonContext } from '../Context/MyPokemonContext';
 import { fetchData } from '../utils'
 import styled from '@emotion/styled'
 
-import ChipMove from '../components/ChipMove'
+import List from '../components/List'
 import TypeList from '../components/TypeList'
 import ModalCatchPokemon from '../components/ModalCatchPokemon';
 import Loading from '../components/Loading';
 import Button from '../components/Button';
+import ResponsiveImg from '../components/ResponsiveImg';
 
 import { mq } from '../assets/styling/breakpoints'
 import { color } from '../constants/style';
+import { css } from '@emotion/css';
 
-
-const Header = styled.div`
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  padding: 10px;
-`
 const Left = styled.div`
   width: 100%;
   ${mq('m')}: {
@@ -30,26 +26,29 @@ const Right = styled.div`
     width: 100%;
   }
 `
-const ImageWrapper = styled.div`
-  width: 200px;
-  height:200px;
-  margin: 0 auto;
+const Wrapper = styled.div`
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
 `
-const Image = styled.img`
-  width: inherit;
-  height: inherit;
-  margin: 0 auto;
+const ImageWrapper = styled.div`
+  max-width: 200px;
+  max-height:200px;
+  margin: 2rem auto;
 `
 
 const PokemonDetail = ({ match }) => {
   const [pokemon, setPokemon] = useState({});
   const [capturedPokemons, setCapturedPokemons] = useContext(MyPokemonContext)
   const [isCaptured, setIsCaptured] = useState(false)
+  const [moves, setMoves] = useState([])
+  const [abilities, setAbilities] = useState([])
 
   const [modalIsActive, setModalIsActive] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  
-  useEffect( () => {
+
+  useEffect(() => {
     getDetail();
   }, [])
   
@@ -58,6 +57,8 @@ const PokemonDetail = ({ match }) => {
       const response = await fetchData(`pokemon/${match.params.pokemonName}`);
       const json = await response.json()
       setPokemon(json)
+      setMoves(() => {return json.moves.map(e => e.move)})
+      setAbilities(() => {return json.abilities.map(e => e.ability)})
     }
   )
 
@@ -81,36 +82,58 @@ const PokemonDetail = ({ match }) => {
 
       <div className="display-flex">
         <Left>
-          <Header>
+          <Wrapper>
             <ImageWrapper>
-              <Image src={pokemon.sprites && pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
+              <ResponsiveImg src={pokemon.sprites && pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
             </ImageWrapper>
+
             <div>
               <h2 className="capitalize text-centered">{pokemon.name}</h2>
             </div>
-            <TypeList types={pokemon.types}></TypeList>
+            
             <div>
+              <p>Weight: {pokemon.weight}</p>
+              <p>Height: {pokemon.height}</p>
+            </div>
+
+            <TypeList types={pokemon.types}></TypeList>
+            <div className="my">
               <Button
-                
-                btnText="Catch"
+                centered={true}
+                width={`100%`}
                 bgColor={color.blue}
                 callbackFunc={ () => catchPokemon(pokemon)}
               >
-                
+                <h2 className="mx-0 my-0 text-white">Catch</h2>
               </Button>
             </div>
-          </Header>
+          </Wrapper>
+
+          <Wrapper>
+            <h2>Abilities</h2>
+            <List
+              data={abilities}
+              property="name"
+            />
+          </Wrapper>
+
+          {/* <Wrapper>
+            <h2 className="capitalize">My {pokemon.name}</h2>
+
+            {
+              
+            }
+          </Wrapper> */}
         </Left>
 
         <Right>
-          <div>
+          <Wrapper>
             <h3>Moves</h3>
-            <div className="display-flex">
-              {pokemon.moves && pokemon.moves.map((move, index) =>
-                <ChipMove key={index} name={move.move.name}/>
-              )}
-            </div>
-          </div>
+            <List
+              data={moves}
+              property="name"
+            />
+          </Wrapper>
         </Right>
       </div>
 

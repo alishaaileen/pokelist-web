@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled'
 
@@ -6,10 +6,10 @@ import PokemonCard from '../components/PokemonCard'
 import { MyPokemonContext } from '../Context/MyPokemonContext';
 
 const ListWrapper = styled.div`
-    width: fit-content;
-    margin: 0 auto;
-    justify-content: space-around;
-  `
+  width: fit-content;
+  margin: 3rem auto;
+  justify-content: space-evenly;
+`
 
 const MyPokemon = () => {
   const [capturedPokemons] = useContext(MyPokemonContext);

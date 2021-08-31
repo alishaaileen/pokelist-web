@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/react'
-
-import TypeList from '../components/TypeList'
 
 const shadowHover = keyframes`
     from {
@@ -65,7 +63,6 @@ export const PokemonCard = ({ pokemon, countOwned}) => {
               owned: {countOwned}
             </p>
         }
-        <TypeList types={pokemon.types}></TypeList>
       </PokemonCardDiv>
     </div>
   )

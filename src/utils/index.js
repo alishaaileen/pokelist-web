@@ -8,13 +8,16 @@ export const fetchData = async (endpoint) => {
   } catch (e) {
     return e
   }
+}
 
+export const gilterMyPokemonBySpeciesName = (name, PokemonList) => {
+  return PokemonList.filter(pokemon => pokemon.name.toLowerCase() === name.toLowerCase())
 }
 
 export const lightenDarkenColor = (col, amt) => {
   var usePound = false;
 
-  if (col[0] == "#") {
+  if (col[0] === "#") {
     col = col.slice(1);
     usePound = true;
   }

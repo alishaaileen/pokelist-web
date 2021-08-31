@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Pokeball from './Pokeball'
+import ResponsiveImg from './ResponsiveImg'
+import PokeballImage from '../assets/images/pokeball.svg'
+import { keyframes } from '@emotion/react'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -15,12 +17,30 @@ const Overlay = styled.div`
   height: 100%;
   position: fixed;
 `
+const RotateInfinite = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
+const ImageWrapper = styled.div`
+  background-color: #fff;
+  width: 50px;
+  height: 50px;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  animation: ${RotateInfinite} 2s linear infinite;
+`
 
-const ModalCatchPokemon = ({closeModal, isCaptured, pokemon}) => {
+const ModalCatchPokemon = () => {
   return (
     <Wrapper>
       <Overlay className="overlay display-flex-centered">
-        <Pokeball />
+        <ImageWrapper>
+          <ResponsiveImg src={PokeballImage} />
+        </ImageWrapper>
       </Overlay>
     </Wrapper>
   )

@@ -50,11 +50,11 @@ const PokemonList = () => {
         loadMore &&
           <div className="display-flex-centered">
             <Button
-              btnText="Load more"
               bgColor={color.blue}
-              btnTextColor={color.white}
               callbackFunc={() => getData()}
-            />
+            >
+              <h2 className="mx-0 my-0 text-white">Load more</h2>
+            </Button>
           </div>
       }
       

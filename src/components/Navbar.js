@@ -12,6 +12,7 @@ const NavWrapper = styled.div`
     align-items: center;
     margin: 0;
     padding: 5px 0;
+    position: fixed;
   }
 `
 const NavMenu = styled.div`
