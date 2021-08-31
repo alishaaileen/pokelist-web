@@ -12,18 +12,31 @@ import ResponsiveImg from '../components/ResponsiveImg';
 
 import { mq } from '../assets/styling/breakpoints'
 import { color } from '../constants/style';
-import { css } from '@emotion/css';
 
-const Left = styled.div`
-  width: 100%;
-  ${mq('m')}: {
+
+
+const PokemonDetailWrapper = styled.div`
+  .content-wrap {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+  }
+  .content-left, .content-right {
     width: 100%;
   }
-`
-const Right = styled.div`
-  width: 100%;
+
   ${mq('m')}: {
-    width: 100%;
+    .content-wrap {
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+    .content-left {
+      width: 30%;
+    }
+    .content-right {
+      width: 70%;
+    }
   }
 `
 const Wrapper = styled.div`
@@ -77,11 +90,11 @@ const PokemonDetail = ({ match }) => {
   }
   
   return (
-    <div className="pokemons-list">
+    <PokemonDetailWrapper className="pokemons-list">
       <h1 className="text-centered">Pokemon Details</h1>
 
-      <div className="display-flex">
-        <Left>
+      <div className="content-wrap">
+        <div className="content-left">
           <Wrapper>
             <ImageWrapper>
               <ResponsiveImg src={pokemon.sprites && pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
@@ -110,11 +123,8 @@ const PokemonDetail = ({ match }) => {
           </Wrapper>
 
           <Wrapper>
-            <h2>Abilities</h2>
-            <List
-              data={abilities}
-              property="name"
-            />
+            <h2>Stats</h2>
+            
           </Wrapper>
 
           {/* <Wrapper>
@@ -124,17 +134,25 @@ const PokemonDetail = ({ match }) => {
               
             }
           </Wrapper> */}
-        </Left>
+        </div>
 
-        <Right>
+        <div className="content-right">
           <Wrapper>
-            <h3>Moves</h3>
+            <h2>Abilities</h2>
+            <List
+              data={abilities}
+              property="name"
+            />
+          </Wrapper>
+
+          <Wrapper>
+            <h2>Moves</h2>
             <List
               data={moves}
               property="name"
             />
           </Wrapper>
-        </Right>
+        </div>
       </div>
 
       { isLoading && <Loading /> }
@@ -150,7 +168,7 @@ const PokemonDetail = ({ match }) => {
           />
       }
 
-    </div>
+    </PokemonDetailWrapper>
   )
 }
 

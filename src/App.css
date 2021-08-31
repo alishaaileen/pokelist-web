@@ -33,10 +33,7 @@ html, body {
   margin-bottom: 2rem;
 }
 
-.display-flex {
-  display: flex;
-  flex-wrap: wrap;
-}
+.display-flex { display: flex; }
 
 .display-flex-centered {
   display: flex;
