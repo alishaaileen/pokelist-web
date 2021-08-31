@@ -7,8 +7,10 @@ import ChipMove from '../components/ChipMove'
 import TypeList from '../components/TypeList'
 import ModalCatchPokemon from '../components/ModalCatchPokemon';
 import Loading from '../components/Loading';
+import Button from '../components/Button';
 
 import { mq } from '../assets/styling/breakpoints'
+import { color } from '../constants/style';
 
 
 const Header = styled.div`
@@ -37,12 +39,6 @@ const Image = styled.img`
   width: inherit;
   height: inherit;
   margin: 0 auto;
-`
-const BtnCatch = styled.button`
-  background-color: blue;
-  border-radius: 5px;
-  width: 100%;
-  height: 40px;
 `
 
 const PokemonDetail = ({ match }) => {
@@ -94,9 +90,14 @@ const PokemonDetail = ({ match }) => {
             </div>
             <TypeList types={pokemon.types}></TypeList>
             <div>
-              <BtnCatch onClick={ () => catchPokemon(pokemon)}>
-                Catch
-              </BtnCatch>
+              <Button
+                
+                btnText="Catch"
+                bgColor={color.blue}
+                callbackFunc={ () => catchPokemon(pokemon)}
+              >
+                
+              </Button>
             </div>
           </Header>
         </Left>
