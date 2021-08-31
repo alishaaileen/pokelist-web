@@ -10,7 +10,7 @@ export const router = () => {
   return (
     <Switch>
       <Route path='/' exact component={PokemonList}/>
-      <Route path='/details' exact component={PokemonDetail}/>
+      <Route path='/details/:pokemonName' component={PokemonDetail}/>
       <Route path='/my-pokemon' exact  component={MyPokemon}/>
     </Switch>
   )

@@ -1,34 +1,54 @@
-// import React from 'react'
-// import PokemonCard from '../components/PokemonCard'
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import styled from '@emotion/styled'
 
-// export const PokemonList = () => {
-//   return (
-//     <div className="App">
-//       <PokemonCard />
-//     </div>
-//   )
-// }
-
-import React, { useState } from 'react';
 import PokemonCard from '../components/PokemonCard'
+import { PokemonContext } from '../Context/PokemonContext';
+import { MyPokemonContext } from '../Context/MyPokemonContext';
 
+const ListWrapper = styled.div`
+    width: fit-content;
+    margin: 0 auto;
+    justify-content: space-around;
+  `
+  
 const PokemonList = () => {
-  const [pokemons] = useState([
-    { id: 1, name: 'Bulbasaur' },
-    { id: 2, name: 'Charmander' },
-    { id: 3, name: 'Squirtle' }
-  ]);
-
+  const [pokemons, loadMore, getData] = useContext(PokemonContext);
+  const [capturedPokemon] = useContext(MyPokemonContext);
+  
+  const countPokemonOwned = name => {
+    const tempPokemon = capturedPokemon.filter(pokemon => pokemon.name === name)
+    
+    return tempPokemon.length
+  }
+  
   return (
     <div className="pokemons-list">
-      <h2>Pokemons List</h2>
+      <h1 className="text-centered">Pokemons List</h1>
+
+      <ListWrapper className="display-flex">
+        {pokemons.map((pokemon, index) =>
+          <div key={index}>
+            <Link className="link-no-decoration" to={`details/${pokemon.name}`}>
+              <PokemonCard
+                image={pokemon.sprites && pokemon.sprites.other.dream_world.front_default}
+                name={pokemon.name}
+                countOwned={countPokemonOwned(pokemon.name)}
+                types={pokemon.types}
+              >
+              </PokemonCard>
+            </Link>
+          </div>
+        )}
+      </ListWrapper>
+      {
+        // If loadMore is null, it means the "next" is null.
+        // Which means that all Pokemons has been loaded
+        // So the button shouldn't be showed anymore
+        loadMore &&
+          <button onClick={() => getData()}>Load more</button>
+      }
       
-      {pokemons.map((pokemon) =>
-        <PokemonCard
-          key={`${pokemon.id}-${pokemon.name}`}
-          id={pokemon.id}
-          name={pokemon.name}>
-        </PokemonCard>)}
     </div>
   )
 }
