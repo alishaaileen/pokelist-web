@@ -10,7 +10,7 @@ import { router as Route} from './pages/router'
 
 const Container = styled.div`
     width: 80%;
-    padding: 0 50px;
+    padding: 50px 0;
     margin: 0 auto;
     aspect-ratio: 100 / 29;
   `
