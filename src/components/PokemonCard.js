@@ -16,7 +16,7 @@ const shadowHover = keyframes`
 const PokemonCardDiv = styled.div`
     background-color: #f5f5f599;
     padding: 16px;
-    margin-bottom: 16px;
+    margin: 10px 0;
     border-radius: 10px;
     &:hover {
       animation: ${shadowHover} 0.1s ease forwards;
@@ -44,25 +44,28 @@ const Image = styled.img`
     margin: 0 auto;
   `
 
-export const PokemonCard = ({ name, image, nickname, types, countOwned}) => {
+export const PokemonCard = ({ pokemon, countOwned}) => {
   return (
     <div>
       <PokemonCardDiv>
         {
-          nickname &&
-            <PokemonNickname>{nickname}</PokemonNickname>
+          pokemon.nickname &&
+            <PokemonNickname>{pokemon.nickname}</PokemonNickname>
         }
         <ImageWrapper className="display-flex-centered">
-          <Image src={image} alt={name}/>
+          <Image
+            src={pokemon.sprites.other.dream_world.front_default}
+            alt={pokemon.name}
+          />
         </ImageWrapper>
-        <PokemonName>{name}</PokemonName>
+        <PokemonName>{pokemon.name}</PokemonName>
         {
           countOwned != null &&
             <p className="text-centered">
               owned: {countOwned}
             </p>
         }
-        <TypeList types={types}></TypeList>
+        <TypeList types={pokemon.types}></TypeList>
       </PokemonCardDiv>
     </div>
   )

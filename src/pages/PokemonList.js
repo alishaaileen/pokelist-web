@@ -2,14 +2,17 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled'
 
-import PokemonCard from '../components/PokemonCard'
 import { PokemonContext } from '../Context/PokemonContext';
 import { MyPokemonContext } from '../Context/MyPokemonContext';
 
+import PokemonCard from '../components/PokemonCard'
+import Button from '../components/Button';
+import { color } from '../constants/style';
+
 const ListWrapper = styled.div`
     width: fit-content;
-    margin: 0 auto;
-    justify-content: space-around;
+    margin: 3rem auto;
+    justify-content: space-evenly;
   `
   
 const PokemonList = () => {
@@ -31,22 +34,28 @@ const PokemonList = () => {
           <div key={index}>
             <Link className="link-no-decoration" to={`details/${pokemon.name}`}>
               <PokemonCard
-                image={pokemon.sprites && pokemon.sprites.other.dream_world.front_default}
-                name={pokemon.name}
+                pokemon={pokemon}
                 countOwned={countPokemonOwned(pokemon.name)}
-                types={pokemon.types}
               >
               </PokemonCard>
             </Link>
           </div>
         )}
       </ListWrapper>
+
       {
         // If loadMore is null, it means the "next" is null.
         // Which means that all Pokemons has been loaded
         // So the button shouldn't be showed anymore
         loadMore &&
-          <button onClick={() => getData()}>Load more</button>
+          <div className="display-flex-centered">
+            <Button
+              btnText="Load more"
+              bgColor={color.blue}
+              btnTextColor={color.white}
+              callbackFunc={() => getData()}
+            />
+          </div>
       }
       
     </div>

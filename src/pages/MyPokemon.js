@@ -19,15 +19,21 @@ const MyPokemon = () => {
       <h1 className="text-centered">My Pokemons</h1>
 
       <ListWrapper className="display-flex">
-        {capturedPokemons.length === 0 && <h3>Nothing in here yet!</h3>}
+        {
+          capturedPokemons.length === 0 &&
+            <div className="text-centered">
+              <h3>You haven't catched any Pokemon (yet)!</h3>
+              <p>
+                {`No worries, just go to the PokeList > select a Pokemon > hit "Catch" button`}
+              </p>
+            </div>
+        }
+
         {capturedPokemons.map((pokemon, index) =>
           <div key={index}>
             <Link className="link-no-decoration" to={`details/${pokemon.name}`}>
               <PokemonCard
-                image={pokemon.sprites && pokemon.sprites.other.dream_world.front_default}
-                name={pokemon.name}
-                nickname={pokemon.nickname}
-                types={pokemon.types}
+                pokemon={pokemon}
               >
               </PokemonCard>
             </Link>
