@@ -1,4 +1,4 @@
-# Simple Pokedex App
+# Simple Pokelist/Pokedex App
 
 
 ## About the project
