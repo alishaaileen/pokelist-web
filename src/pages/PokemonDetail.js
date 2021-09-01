@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { MyPokemonContext } from '../Context/MyPokemonContext';
 import { fetchData } from '../utils'
 import styled from '@emotion/styled'
@@ -67,15 +67,13 @@ const PokemonDetail = ({ match }) => {
     getDetail();
   }, [])
   
-  const getDetail = useCallback(
-    async () => {
-      const response = await fetchData(`pokemon/${match.params.pokemonName}`);
-      const json = await response.json()
-      setPokemon(json)
-      setMoves(() => {return json.moves.map(e => e.move)})
-      setAbilities(() => {return json.abilities.map(e => e.ability)})
-    }
-  )
+  const getDetail = async () => {
+    const response = await fetchData(`pokemon/${match.params.pokemonName}`);
+    const json = await response.json()
+    setPokemon(json)
+    setMoves(() => {return json.moves.map(e => e.move)})
+    setAbilities(() => {return json.abilities.map(e => e.ability)})
+  }
 
   const catchPokemon = (pokemon) => {
     setIsLoading(true)
