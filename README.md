@@ -7,11 +7,11 @@ enables you to catch Pokemon with 50% percentage of success. Pokemons that
 are successfully catched will be saved to My Pokemon and can be seen on the 
 respective menu. My Pokemon will persist even after a full-page reload.
 
-<img src="./AppPreviews/desktop-view.png" alt="app on desktop viewport" />
+<img width="400" src="./AppPreviews/desktop-view.png" alt="app on desktop viewport" />
 
-<img src="./AppPreviews/mobile-view.png" alt="app on mobile viewport" />
+<img width="400" src="./AppPreviews/mobile-view.png" alt="app on mobile viewport" />
 
-<img src="./AppPreviews/detail.png" alt="pokemon detail" />
+<img width="400" src="./AppPreviews/detail.png" alt="pokemon detail" />
 
 ### Built with
 <ul>
