@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pokelist-web/static/css/main.f83cfb4c.chunk.css",
-    "main.js": "/pokelist-web/static/js/main.b816888a.chunk.js",
-    "main.js.map": "/pokelist-web/static/js/main.b816888a.chunk.js.map",
+    "main.js": "/pokelist-web/static/js/main.b4b08221.chunk.js",
+    "main.js.map": "/pokelist-web/static/js/main.b4b08221.chunk.js.map",
     "runtime-main.js": "/pokelist-web/static/js/runtime-main.c4cc7bc7.js",
     "runtime-main.js.map": "/pokelist-web/static/js/runtime-main.c4cc7bc7.js.map",
     "static/js/2.4e02adf6.chunk.js": "/pokelist-web/static/js/2.4e02adf6.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.c4cc7bc7.js",
     "static/js/2.4e02adf6.chunk.js",
     "static/css/main.f83cfb4c.chunk.css",
-    "static/js/main.b816888a.chunk.js"
+    "static/js/main.b4b08221.chunk.js"
   ]
 }
