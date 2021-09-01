@@ -9,7 +9,7 @@ const Chip = styled.div`
     width: auto;
     color: #f5f5f5;
     padding: 5px 10px;
-    margin: 0 5px;
+    margin-right: 8px;
   `
 const setBgColor = (typeName) => {
   const matchedType = TYPES.find(type => type.name === typeName)
@@ -20,7 +20,7 @@ const setBgColor = (typeName) => {
 export const ChipType = (props) => {
   return (
     <Chip className={css`${setBgColor(props.name)}`}>
-      <span>
+      <span className="text-white">
         { props.name }
       </span>
     </Chip>

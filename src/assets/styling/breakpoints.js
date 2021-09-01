@@ -13,7 +13,5 @@ export const mq = n => {
     return acc;
   }, []);
 
-  console.log(result)
-
   return result;
 };

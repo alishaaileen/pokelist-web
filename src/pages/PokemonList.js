@@ -8,13 +8,28 @@ import { MyPokemonContext } from '../Context/MyPokemonContext';
 import PokemonCard from '../components/PokemonCard'
 import Button from '../components/Button';
 import { color } from '../constants/style';
+import { mq } from '../assets/styling/breakpoints'
 
-const ListWrapper = styled.div`
-    width: fit-content;
-    margin: 3rem auto;
-    justify-content: space-evenly;
-  `
-  
+const ContentWrapper = styled.div`
+  .list-wrapper {
+    margin: 0 16px;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  .pokemon-card {
+    display: flex;
+  }
+
+  ${mq('m')} {
+    .list-wrapper {
+      margin: 0 auto;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+    }
+  }
+`
+
 const PokemonList = () => {
   const [pokemons, loadMore, getData] = useContext(PokemonContext);
   const [capturedPokemon] = useContext(MyPokemonContext);
@@ -26,10 +41,10 @@ const PokemonList = () => {
   }
   
   return (
-    <div className="pokemons-list">
+    <ContentWrapper>
       <h1 className="text-centered">Pokemons List</h1>
 
-      <ListWrapper className="display-flex">
+      <div className="list-wrapper">
         {pokemons.map((pokemon, index) =>
           <div key={index}>
             <Link className="link-no-decoration" to={`details/${pokemon.name}`}>
@@ -41,7 +56,7 @@ const PokemonList = () => {
             </Link>
           </div>
         )}
-      </ListWrapper>
+      </div>
 
       {
         // If loadMore is null, it means the "next" is null.
@@ -58,7 +73,7 @@ const PokemonList = () => {
           </div>
       }
       
-    </div>
+    </ContentWrapper>
   )
 }
 

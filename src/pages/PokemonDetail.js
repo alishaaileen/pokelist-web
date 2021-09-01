@@ -9,6 +9,7 @@ import ModalCatchPokemon from '../components/ModalCatchPokemon';
 import Loading from '../components/Loading';
 import Button from '../components/Button';
 import ResponsiveImg from '../components/ResponsiveImg';
+import StatusBar from '../components/StatusBar';
 
 import { mq } from '../assets/styling/breakpoints'
 import { color } from '../constants/style';
@@ -17,7 +18,7 @@ import { color } from '../constants/style';
 
 const PokemonDetailWrapper = styled.div`
   .content-wrap {
-    width: 100%;
+    padding: 0 16px;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -25,8 +26,14 @@ const PokemonDetailWrapper = styled.div`
   .content-left, .content-right {
     width: 100%;
   }
+  
+  .image-wrapper {
+    max-width: 200px;
+    max-height:200px;
+    margin-bottom: 3rem;
+  }
 
-  ${mq('m')}: {
+  ${mq('m')} {
     .content-wrap {
       flex-flow: row nowrap;
       justify-content: space-between;
@@ -35,20 +42,15 @@ const PokemonDetailWrapper = styled.div`
       width: 30%;
     }
     .content-right {
-      width: 70%;
+      width: 68%;
     }
   }
 `
 const Wrapper = styled.div`
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 10px;
-  padding: 16px;
+  padding: 24px;
   margin-bottom: 24px;
-`
-const ImageWrapper = styled.div`
-  max-width: 200px;
-  max-height:200px;
-  margin: 2rem auto;
 `
 
 const PokemonDetail = ({ match }) => {
@@ -96,9 +98,12 @@ const PokemonDetail = ({ match }) => {
       <div className="content-wrap">
         <div className="content-left">
           <Wrapper>
-            <ImageWrapper>
-              <ResponsiveImg src={pokemon.sprites && pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
-            </ImageWrapper>
+            <div className="image-wrapper mx-auto">
+              <ResponsiveImg
+                src={pokemon.sprites && pokemon.sprites.other.dream_world.front_default}
+                alt={pokemon.name}
+              />
+            </div>
 
             <div>
               <h2 className="capitalize text-centered">{pokemon.name}</h2>
@@ -122,11 +127,6 @@ const PokemonDetail = ({ match }) => {
             </div>
           </Wrapper>
 
-          <Wrapper>
-            <h2>Stats</h2>
-            
-          </Wrapper>
-
           {/* <Wrapper>
             <h2 className="capitalize">My {pokemon.name}</h2>
 
@@ -146,6 +146,16 @@ const PokemonDetail = ({ match }) => {
           </Wrapper>
 
           <Wrapper>
+            <h2>Stats</h2>
+            
+            {
+              pokemon.stats && pokemon.stats.map((stat, index) =>
+                <StatusBar key={index} statName={stat.stat.name} points={stat.base_stat} />
+              )
+            }
+          </Wrapper>
+
+          <Wrapper>
             <h2>Moves</h2>
             <List
               data={moves}
@@ -160,7 +170,9 @@ const PokemonDetail = ({ match }) => {
       {
         modalIsActive &&
           <ModalCatchPokemon
-            closeModal={modalIsActive => setModalIsActive(modalIsActive)}
+            closeModal={() => {
+              setModalIsActive(false)
+            }}
             saveCatchedPokemon={event => saveCatchedPokemon(event)}
             isCaptured={isCaptured}
             pokemon={pokemon}

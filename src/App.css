@@ -55,9 +55,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #292929;
   margin-top: 0;
 }
-p, span, a, small {
+p, span, a, small, label {
   font-family: 'Nunito Sans', sans-serif;
   color: #292929;
+  margin-top: 0;
 }
 .text-white { color: #fff }
 .text-error { color: #CC0000 }

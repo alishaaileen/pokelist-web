@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { color } from '../constants/style'
 
@@ -11,6 +11,9 @@ const ListRow = styled.div`
   width: auto;
   padding: 10px;
   border-bottom: 2px solid ${color.grey};
+  &:hover {
+    background-color: ${color.grey};
+  }
 `
 
 export const List = ({ data, property }) => {

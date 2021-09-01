@@ -13,6 +13,7 @@ const NavWrapper = styled.div`
     margin: 0;
     padding: 5px 0;
     position: fixed;
+    z-index: 2;
   }
 `
 const NavMenu = styled.div`

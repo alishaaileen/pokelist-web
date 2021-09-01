@@ -5,6 +5,7 @@ import Button from './Button'
 import { color } from '../constants/style'
 import { css } from '@emotion/css'
 import { lightenDarkenColor } from '../utils'
+import { mq } from '../assets/styling/breakpoints'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -20,10 +21,23 @@ const Overlay = styled.div`
   position: fixed;
 `
 const Modal = styled.div`
-  width: fit-content;
-  border-radius: 10px;
+  width: 100%;
+  height: 80vh;
+  border-radius: 10px 10px 0 0;
   background-color: #fff;
-  padding: 32px 24px;
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+
+  ${mq('m')} {
+    align-self: center;
+    height: auto;
+    border-radius: 10px;
+    width: 50%;
+    height: 50vh;
+    padding: 32px 24px;
+  }
 `
 const Input = styled.input`
   height: 32px;
@@ -31,6 +45,7 @@ const Input = styled.input`
   text-align: center;
   background-color: ${color.grey};
   border: 2px solid ${lightenDarkenColor(color.grey, -20)};
+  font-size: 16px;
 `
 
 const ModalCatchPokemon = ({closeModal, isCaptured, pokemon, saveCatchedPokemon, capturedPokemons}) => {
@@ -60,7 +75,7 @@ const ModalCatchPokemon = ({closeModal, isCaptured, pokemon, saveCatchedPokemon,
         <h2>Failed to catch</h2>
         <p>Maybe try again?</p>
 
-        <Button onClick={() => closeModal(false)}>Close</Button>
+        <Button callbackFunc={() => closeModal(false)}>Close</Button>
       </div>    
     )
   }
@@ -73,7 +88,7 @@ const ModalCatchPokemon = ({closeModal, isCaptured, pokemon, saveCatchedPokemon,
             isCaptured && 
             <div className="text-centered">
               <h2 className="capitalize">You catched {pokemon.name}!</h2>
-              <p>Give it a nickname</p>
+              <p>Give it a catchy nickname</p>
               <form onSubmit={(event) => handleSubmit(event)}>
                 <div className={css`margin-bottom: 1rem`}>
                   <Input

@@ -5,7 +5,7 @@ const ResponsiveImg = ({ src }) => {
   const Image = styled.img`
     width: 100%;
     height: inherit;
-    object-fit: cover;
+    object-fit: contain;
     object-position: bottom;
     margin: 0 auto;
   `
