@@ -33,7 +33,12 @@ const PokemonDetailWrapper = styled.div`
     margin-bottom: 3rem;
   }
 
-  ${mq('m')} {
+  .more-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ${mq('s')} {
     .content-wrap {
       flex-flow: row nowrap;
       justify-content: space-between;
@@ -59,12 +64,14 @@ const PokemonDetail = ({ match }) => {
   const [isCaptured, setIsCaptured] = useState(false)
   const [moves, setMoves] = useState([])
   const [abilities, setAbilities] = useState([])
-
+  const [myPokemonByName, setMyPokemonByName] = useState([])
+  
   const [modalIsActive, setModalIsActive] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     getDetail();
+    setMyPokemonByName(() => capturedPokemons.filter(captPokemon => captPokemon.name === match.params.pokemonName))
   }, [])
   
   const getDetail = async () => {
@@ -114,8 +121,18 @@ const PokemonDetail = ({ match }) => {
             </div>
             
             <div>
-              <p>Weight: {pokemon.weight}</p>
-              <p>Height: {pokemon.height}</p>
+              <div className="more-info">
+                <h4>Weight</h4>
+                <p>{pokemon.weight} kg</p>
+              </div>
+              <div className="more-info">
+                <h4>Height</h4>
+                <p>{pokemon.height/10} m</p>
+              </div>
+              <div className="more-info">
+                <h4>Base XP</h4>
+                <p>{pokemon.base_experience}</p>
+              </div>
             </div>
 
             <TypeList types={pokemon.types}></TypeList>
@@ -131,13 +148,24 @@ const PokemonDetail = ({ match }) => {
             </div>
           </Wrapper>
 
-          {/* <Wrapper>
-            <h2 className="capitalize">My {pokemon.name}</h2>
+          <Wrapper>
+            <h2 className="capitalize">My {pokemon.name} ({myPokemonByName.length})</h2>
 
             {
-              
+              myPokemonByName.length > 0 ? (
+                <List
+                  data={myPokemonByName}
+                  property="nickname"
+                />
+              ) : (
+                <div>
+                  <p>
+                    No {pokemon.name} captured yet
+                  </p>
+                </div>
+              )
             }
-          </Wrapper> */}
+          </Wrapper>
         </div>
 
         <div className="content-right">

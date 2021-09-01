@@ -21,7 +21,7 @@ const ContentWrapper = styled.div`
     display: flex;
   }
 
-  ${mq('m')} {
+  ${mq('s')} {
     .list-wrapper {
       margin: 0 auto;
       flex-flow: row wrap;

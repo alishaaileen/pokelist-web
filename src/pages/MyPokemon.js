@@ -31,7 +31,7 @@ const ContentWrapper = styled.div`
     margin-bottom: 14px;
   }
 
-  ${mq('m')} {
+  ${mq('s')} {
     .list-wrapper {
       margin: 0 auto;
       flex-flow: row wrap;

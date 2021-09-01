@@ -37,7 +37,7 @@ const PokemonCardDiv = styled.div`
     margin-bottom: 0.5rem;
   }
 
-  ${mq('m')} {
+  ${mq('s')} {
     display: block;
     &:hover {
       animation: ${shadowHover} 0.1s ease forwards;

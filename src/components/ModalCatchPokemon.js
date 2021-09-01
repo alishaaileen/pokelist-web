@@ -30,7 +30,7 @@ const Modal = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${mq('m')} {
+  ${mq('s')} {
     align-self: center;
     height: auto;
     border-radius: 10px;
