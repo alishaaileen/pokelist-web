@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/pokelist-web/static/css/main.f83cfb4c.chunk.css",
-    "main.js": "/pokelist-web/static/js/main.1d6b6e3a.chunk.js",
-    "main.js.map": "/pokelist-web/static/js/main.1d6b6e3a.chunk.js.map",
+    "main.js": "/pokelist-web/static/js/main.568f4e02.chunk.js",
+    "main.js.map": "/pokelist-web/static/js/main.568f4e02.chunk.js.map",
     "runtime-main.js": "/pokelist-web/static/js/runtime-main.c4cc7bc7.js",
     "runtime-main.js.map": "/pokelist-web/static/js/runtime-main.c4cc7bc7.js.map",
-    "static/js/2.4e02adf6.chunk.js": "/pokelist-web/static/js/2.4e02adf6.chunk.js",
-    "static/js/2.4e02adf6.chunk.js.map": "/pokelist-web/static/js/2.4e02adf6.chunk.js.map",
+    "static/js/2.9965e89a.chunk.js": "/pokelist-web/static/js/2.9965e89a.chunk.js",
+    "static/js/2.9965e89a.chunk.js.map": "/pokelist-web/static/js/2.9965e89a.chunk.js.map",
     "static/js/3.e046a1e3.chunk.js": "/pokelist-web/static/js/3.e046a1e3.chunk.js",
     "static/js/3.e046a1e3.chunk.js.map": "/pokelist-web/static/js/3.e046a1e3.chunk.js.map",
     "index.html": "/pokelist-web/index.html",
     "static/css/main.f83cfb4c.chunk.css.map": "/pokelist-web/static/css/main.f83cfb4c.chunk.css.map",
-    "static/js/2.4e02adf6.chunk.js.LICENSE.txt": "/pokelist-web/static/js/2.4e02adf6.chunk.js.LICENSE.txt",
+    "static/js/2.9965e89a.chunk.js.LICENSE.txt": "/pokelist-web/static/js/2.9965e89a.chunk.js.LICENSE.txt",
     "static/media/App.css": "/pokelist-web/static/media/bg.702b9cb7.webp",
     "static/media/pokeball.3b2396ac.svg": "/pokelist-web/static/media/pokeball.3b2396ac.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c4cc7bc7.js",
-    "static/js/2.4e02adf6.chunk.js",
+    "static/js/2.9965e89a.chunk.js",
     "static/css/main.f83cfb4c.chunk.css",
-    "static/js/main.1d6b6e3a.chunk.js"
+    "static/js/main.568f4e02.chunk.js"
   ]
 }
