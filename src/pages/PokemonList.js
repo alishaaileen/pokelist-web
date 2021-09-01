@@ -47,7 +47,7 @@ const PokemonList = () => {
       <div className="list-wrapper">
         {pokemons.map((pokemon, index) =>
           <div key={index}>
-            <Link className="link-no-decoration" to={`details/${pokemon.name}`}>
+            <Link className="link-no-decoration" to={`/pokelist-web/details/${pokemon.name}`}>
               <PokemonCard
                 pokemon={pokemon}
                 countOwned={countPokemonOwned(pokemon.name)}

@@ -80,7 +80,7 @@ const MyPokemon = () => {
             <PokemonCard pokemon={pokemon}>
               <div className="card-menu">
                 <div className="btn-menu">
-                  <Link className="link-no-decoration" to={`details/${pokemon.name}`}>
+                  <Link className="link-no-decoration" to={`/pokelist-web/details/${pokemon.name}`}>
                     <Button bgColor={color.blue}>
                       <h4 className="text-white my-0">Detail</h4>
                     </Button>

@@ -9,10 +9,10 @@ import MyPokemon from './MyPokemon'
 export const router = () => {
   return (
     <Switch>
-      <Redirect path='/' to='/pokelist-web'/>
-      <Route path='/pokelist-web' exact component={PokemonList}/>
-      <Route path='/pokelist-web/details/:pokemonName' component={PokemonDetail}/>
-      <Route path='/pokelist-web/my-pokemon' exact  component={MyPokemon}/>
+      <Redirect exact from="/" to="/pokelist-web" />
+      <Route exact path='/pokelist-web' component={PokemonList}/>
+      <Route exact path='/pokelist-web/details/:pokemonName' component={PokemonDetail}/>
+      <Route exact path='/pokelist-web/my-pokemon'  component={MyPokemon}/>
     </Switch>
   )
 }
