@@ -30,12 +30,12 @@ export const Navbar = () => {
   return (
     <NavWrapper>
       <nav>
-        <Link className="link-no-decoration" to="/">
+        <Link className="link-no-decoration" to="/pokelist-web">
           <NavMenu>
             PokeList
           </NavMenu>
         </Link>
-        <Link className="link-no-decoration" to="/my-pokemon">
+        <Link className="link-no-decoration" to="/pokelist-web/my-pokemon">
           <NavMenu>
             My Pokemon
           </NavMenu>
