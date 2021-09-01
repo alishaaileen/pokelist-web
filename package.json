@@ -18,8 +18,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "predeply": "yarn build",
-    "deploy": "gh-pages -d dist",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
