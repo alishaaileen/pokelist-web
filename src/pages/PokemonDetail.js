@@ -88,7 +88,13 @@ const PokemonDetail = ({ match }) => {
 
   const saveCatchedPokemon = (nickname) => {
     setModalIsActive(false)
-    setCapturedPokemons(prevList => [...prevList, {...pokemon, nickname: nickname}])
+
+    setCapturedPokemons(prevList => {
+      const tempNewArray = [...prevList, {...pokemon, nickname: nickname}]
+      localStorage.setItem('capturedPokemons', JSON.stringify(tempNewArray))
+
+      return tempNewArray
+    })
   }
   
   return (

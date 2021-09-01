@@ -54,6 +54,8 @@ const MyPokemon = () => {
     
     tempNewArray.splice(index, 1)
 
+    localStorage.setItem('capturedPokemons', JSON.stringify(tempNewArray))
+
     setCapturedPokemons(tempNewArray)
   }
   
